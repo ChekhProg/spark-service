@@ -1,8 +1,6 @@
-package com.chekh.sparkservice.Data
+package com.chekh.sparkservice.model
 
-import com.chekh.sparkservice.DataQuality.QualityError
-import com.chekh.sparkservice.Metric.Metric
-import com.chekh.sparkservice.Person.Person
+import com.chekh.sparkservice.dataquality.QualityError
 
 case class Data (person: Option[Person], metric: Metric)
 

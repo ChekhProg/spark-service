@@ -1,32 +1,14 @@
-package com.chekh.sparkservice.Reader
+package com.chekh.sparkservice.reader
 
-import com.chekh.sparkservice.Data.Data
-import com.chekh.sparkservice.Person.Person
-import org.apache.spark.SparkConf
+import com.chekh.sparkservice.model.{Data, Person}
 import org.apache.spark.sql.avro.functions.to_avro
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.elasticsearch.hadoop.cfg.ConfigurationOptions
-import org.elasticsearch.spark.sql.EsSparkSQL
-import org.elasticsearch.spark.sql._
-import org.elasticsearch.spark.streaming._
 
 import java.nio.file.{Files, Paths}
 
 object Reader extends App {
-
-//  val conf = new SparkConf().setAppName("spark-basic-hw").setMaster("local")
-//  conf.set("es.index.auto.create", "true")
-//
-//  ss.sparkContext.setLogLevel("ERROR")
-//
-//  lazy val ss: SparkSession =
-//    SparkSession.builder
-//      .config(ConfigurationOptions.ES_NODES, "localhost")
-//      .config(ConfigurationOptions.ES_PORT, "9200")
-//      .config(conf)
-//      .getOrCreate()
 
   val spark: SparkSession = SparkSession.builder
     .appName("StructurePersonReader")
@@ -75,5 +57,5 @@ object Reader extends App {
     .start()
 
   elasticDF.awaitTermination()
-  //kafkaDF.awaitTermination()
+  kafkaDF.awaitTermination()
 }

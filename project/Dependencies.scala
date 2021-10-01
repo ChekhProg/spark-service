@@ -5,7 +5,6 @@ object Dependencies {
 
   private object Version {
     val spark = "3.1.1"
-    //val spark = "2.4.6"
     val kafka = "2.8.0"
     val elasticsearch = "7.14.0"
   }
@@ -25,6 +24,5 @@ object Dependencies {
 
   object Elasticsearch {
     val Spark = "org.elasticsearch" %% "elasticsearch-spark-30" % Version.elasticsearch
-    val Hadoop = "org.elasticsearch" % "elasticsearch-hadoop" % "6.1.0"
   }
 }

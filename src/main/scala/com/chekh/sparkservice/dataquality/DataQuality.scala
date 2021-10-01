@@ -1,7 +1,6 @@
-package com.chekh.sparkservice.DataQuality
+package com.chekh.sparkservice.dataquality
 
 import scala.annotation.tailrec
-import scala.util.{Failure, Success, Try}
 
 object DataQuality {
   @tailrec

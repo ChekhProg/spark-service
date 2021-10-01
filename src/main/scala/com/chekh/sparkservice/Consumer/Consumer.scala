@@ -1,10 +1,8 @@
 package com.chekh.sparkservice.Consumer
 
-import com.chekh.sparkservice.Person.Person
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.avro.functions.from_avro
-import org.apache.spark.sql.functions.{col, struct}
-import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.functions.col
 
 import java.nio.file.{Files, Paths}
 

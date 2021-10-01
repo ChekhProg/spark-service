@@ -12,5 +12,4 @@ libraryDependencies ++= Seq(
   Spark.Kafka,
   Spark.Avro,
   Elasticsearch.Spark
-  //Elasticsearch.Hadoop
 )

@@ -1,4 +1,4 @@
-package com.chekh.sparkservice.DataQuality
+package com.chekh.sparkservice.dataquality
 
 import scala.util.{Failure, Success, Try}
 
