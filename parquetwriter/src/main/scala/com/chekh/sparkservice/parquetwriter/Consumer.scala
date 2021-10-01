@@ -1,10 +1,10 @@
-package com.chekh.sparkservice.Consumer
+package com.chekh.sparkservice.parquetwriter
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.avro.functions.from_avro
 import org.apache.spark.sql.functions.col
 
-import java.nio.file.{Files, Paths}
+import java.nio.file.{ Files, Paths }
 
 object Consumer extends App {
 
@@ -23,10 +23,9 @@ object Consumer extends App {
     .option("startingOffsets", "earliest")
     .load()
 
-  val personDF = df.select(from_avro(col("value"), jsonFormatSchema).as("person"))
+  val personDF = df
+    .select(from_avro(col("value"), jsonFormatSchema).as("person"))
     .select("person.*")
-
-  personDF.show()
 
   personDF.write.parquet("src/main/resources/output/people.parquet")
 }
