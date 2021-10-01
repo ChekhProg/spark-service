@@ -1,14 +1,14 @@
 package com.chekh.sparkservice.reader
 
-import com.chekh.sparkservice.model.{Data, Person}
+import com.chekh.sparkservice.model.{ PersonDqData, Person }
 import org.apache.spark.sql.avro.functions.to_avro
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.types.{ IntegerType, StringType, StructField, StructType }
+import org.apache.spark.sql.{ DataFrame, SparkSession }
 
-import java.nio.file.{Files, Paths}
+import java.nio.file.{ Files, Paths }
 
-object Reader extends App {
+object Producer extends App {
 
   val spark: SparkSession = SparkSession.builder
     .appName("StructurePersonReader")
@@ -33,7 +33,7 @@ object Reader extends App {
   import spark.implicits._
 
   val dataDF = csvDF
-    .map(row => Data(Person.fromStrings(row.getString(1), row.getInt(2)), row.getInt(0)))
+    .map(row => PersonDqData(Person.fromStrings(row.getString(1), row.getInt(2)), row.getInt(0)))
 
   val schemaAvro = new String(Files.readAllBytes(Paths.get("./src/main/resources/person.avsc")))
 
